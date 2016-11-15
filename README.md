@@ -50,10 +50,11 @@ The direct_bus_route field has to be set to true if there exists a bus route in 
 
 #### Bus Routes Data File:
 
-3
-0 0 1 2 3 4
-1 3 1 6 5
-2 0 6 4
+3    
+0 0 1 2 3 4    
+1 3 1 6 5     
+2 0 6 4      
+
 #### Query:
 
 http://localhost:8088/api/direct?dep_sid=3&arr_sid=6
@@ -68,13 +69,35 @@ http://localhost:8088/api/direct?dep_sid=3&arr_sid=6
 ## Solution:
 
 . It is a flask-restful service.
-. It contains volatile data store to hold all bus route informations
+. It contains volatile data store to hold all bus route information
 . The bus route informations are connected by a linked list representation
 . You can post the input data
 
 ### Run the flask service:
 
+`python run.py` (default running in 5000 port)
+
 ### Post inputs:
+`
+curl -X POST "http://localhost:5000/api/register" -d '{"routes": ["1 1 2 3 4 5", "2 3 4 5", "5 6 7 8"], "tot_routes": 3}' -vvv
+`
+ - 3 routes are posted, it should match with the total routes 
+ - Each route's first item is route_id, remaining elements are station ids
 
 ### Query the api:
+
+`
+curl -X GET "http://localhost:5000/api/direct?dep_id=5&arr_id=7" -vvv
+`
+
+##### response
+
+`
+{
+    "arr_sid": 7, 
+    "dep_sid": 5, 
+    "direct_bus_route": false
+}
+
+`
 
