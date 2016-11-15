@@ -79,7 +79,7 @@ http://localhost:8088/api/direct?dep_sid=3&arr_sid=6
 
 ### Post inputs:
 `
-curl -X POST "http://localhost:5000/api/register" -d '{"routes": ["1 1 2 3 4 5", "2 3 4 5", "5 6 7 8"], "tot_routes": 3}' -vvv
+curl -X POST "http://localhost:5000/api/direct" -d '{"routes": ["1 1 2 3 4 5", "2 3 4 5", "5 6 7 8"], "tot_routes": 3}' -vvv
 `
  - 3 routes are posted, it should match with the total routes 
  - Each route's first item is route_id, remaining elements are station ids
