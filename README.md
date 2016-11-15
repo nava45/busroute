@@ -64,3 +64,17 @@ http://localhost:8088/api/direct?dep_sid=3&arr_sid=6
     "arr_sid": 6,
     "direct_bus_route": true
 }
+
+## Solution:
+
+. It is a flask-restful service.
+. It contains volatile data store to hold all bus route informations
+. The bus route informations are connected by a linked list representation
+. You can post the input data
+
+### Run the flask service:
+
+### Post inputs:
+
+### Query the api:
+
