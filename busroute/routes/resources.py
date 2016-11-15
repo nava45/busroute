@@ -33,19 +33,23 @@ class RegisterBusRoute(Resource):
 
 class QueryRoutes(Resource):
     def get(self):
-        dep_id = int(request.args.get('dep_id'))
-        arr_id = int(request.args.get('arr_id'))
-        is_succ, route = lookup_station(arr_id, dep_id)
-        return {
-            "dep_sid": dep_id,
-            "arr_sid": arr_id,
-            "direct_bus_route": is_succ
-        }
+        try:
+            dep_id = int(request.args.get('dep_id'))
+            arr_id = int(request.args.get('arr_id'))
+            is_succ, route = lookup_station(arr_id, dep_id)
+            return {
+                "dep_sid": dep_id,
+                "arr_sid": arr_id,
+                "direct_bus_route": is_succ
+            }, 200
+        except Exception as e:
+            return str(e), 500
 
     def post(self):
 
         try:
             json_data = request.get_json(force=True)
+            return None, 201
         except Exception:
             return "Malformed Payload Error: Please check the payload format", 500
 
