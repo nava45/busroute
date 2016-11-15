@@ -92,12 +92,10 @@ curl -X GET "http://localhost:5000/api/direct?dep_id=5&arr_id=7" -vvv
 
 ##### response
 
-`
-{
+`{
     "arr_sid": 7, 
     "dep_sid": 5, 
     "direct_bus_route": false
 }
-
 `
 
